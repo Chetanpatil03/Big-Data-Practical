@@ -1,0 +1,31 @@
+Java code - 
+
+import org.apache.pig.EvalFunc;
+import org.apache.pig.data.Tuple;
+
+public class PigUDF extends EvalFunc<String> {
+  public String exec(Tuple tuple)throws IOException {
+     if(tuple ==null) {
+   return null;
+   }
+   String user=(String)tuple.get(0);
+   String city=(String)tuple.get(1);
+   int score=(Integer)tuple.get(2);
+   return user+”,”+city.toUpperCase()+”,”+score;
+  }
+}
+
+********** Pig File content : (toupper.pig)
+
+  REGISTER /home/cloudera/PigAss7.jar
+  DEFINE toupper PigUDF();
+  
+  usa = LOAD ‘/home/cloudera/cust_us.txt’ Using PigStorage(‘,’) AS (user:chararray,city:chararray,score:int);
+  
+  usa_upper = FOREACH usa GENERATE toupper(user,city,score);
+
+  DUMP usa_upper;
+
+********** To Execute Pig file 
+
+  pig –x local toupper.pig
