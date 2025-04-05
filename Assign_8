@@ -1,0 +1,33 @@
+******** Java Code ---  (Ass8Demo.jar)
+
+import org.apache.pig.EvalFunc;
+import org.apache.pig.data.Tuple;
+import org.apache.pig.data.DataByteArray;
+public class ConcatStrings extends EvalFunc<DataByteArray> {
+   @Override
+   public DataByteArray exec(Tuple input) {
+     if (input == null || input.size() < 2)
+     return null;
+   try {
+       String str1 = (String) input.get(0);
+       String str2 = (String) input.get(1);
+       return new DataByteArray((str1 + str2).getBytes());
+     } catch (Exception e) {
+       return null;
+     }
+   }
+}
+
+
+***************** Pig File Content ----------- (strcat.pig)
+    REGISTER /home/cloudera/Ass8Demo.jar
+    DEFINE ConcatStrings ConcatStrings();
+
+    data = LOAD ‘/home/cloudera/strdata.txt’ Using PigStorage(‘,’) AS (str1:chararray,str2:chararray);
+
+    result = FOREACH data GENERATE ConcatStrings(str1,str2);
+    DUMP result;
+
+
+***** To execute : 
+    pig –x local strcat.pig
