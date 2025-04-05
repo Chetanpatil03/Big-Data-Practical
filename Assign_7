@@ -17,14 +17,14 @@ public class PigUDF extends EvalFunc<String> {
 
 ********** Pig File content : (toupper.pig)
 
-  REGISTER /home/cloudera/PigAss7.jar
-  DEFINE toupper PigUDF();
-  
-  usa = LOAD ‘/home/cloudera/cust_us.txt’ Using PigStorage(‘,’) AS (user:chararray,city:chararray,score:int);
-  
-  usa_upper = FOREACH usa GENERATE toupper(user,city,score);
+REGISTER '/home/cloudera/Asss7.jar';
+DEFINE toupper Asss7();
 
-  DUMP usa_upper;
+usa = LOAD '/home/cloudera/d1.txt' USING PigStorage(',') AS (user:chararray, city:chararray, score:int);
+
+usa_upper = FOREACH usa GENERATE toupper(user, city, score);
+
+DUMP usa_upper;
 
 ********** To Execute Pig file 
 
