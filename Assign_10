@@ -23,7 +23,9 @@ Insert 5 record on each table by using insert command
     SELECT e.emp_name, d.dept_name
     FROM employees e
     JOIN departments d
-    ON e.emp_department = d.dept_id;
+    ON e.emp_id = d.dept_id;
+
+NOTE : The emp_id values are same as dept_id without the ouput is not shown. 
  
 3. Aggregate Functions
     a. Count the number of employees:
