@@ -8,6 +8,7 @@ Perform operations like joins, group by, and aggregations in Hive.
       ) ROW FORMAT DELIMITED
       FIELDS TERMINATED BY ','
       STORED AS TEXTFILE;
+      
       CREATE TABLE departments (
        dept_id INT,
        dept_name STRING,
