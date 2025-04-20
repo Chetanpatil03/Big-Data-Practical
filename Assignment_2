@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class FileHandiling {
+    public static void main(String[] args) throws IOException{
+        File file = new File("C:\\Users\\cheta\\OneDrive\\Desktop\\Java programs\\First.txt");
+
+        if (file.createNewFile()) {
+            System.out.println("File created");
+        }
+        else{
+            System.out.println("File already exists");
+        }
+
+        FileWriter fwt = new FileWriter("C:\\Users\\cheta\\OneDrive\\Desktop\\Java programs\\First.txt");
+
+        fwt.write("This is demo text file......\n This is new line");
+        fwt.close();
+
+        Scanner sc = new Scanner(file);
+
+        while (sc.hasNextLine()) {
+            String str = sc.nextLine();
+            System.out.println(str);
+        }
+
+        sc.close();
+
+    }
+}
