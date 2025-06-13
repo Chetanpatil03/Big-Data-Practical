@@ -59,7 +59,7 @@ public class WordCount {
     }
 }
 
-File Link https:// hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-clientcore/MapReduceTutorial.html#Source_Code
+File Link https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0
 
 Step 1:
 Export Java Eclipse Project Jar File to Cloudera 
